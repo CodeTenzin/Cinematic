@@ -11,17 +11,18 @@ const router = express.Router();
 //   { id: 3, name: "Romance" },
 // ];
 
-const Genre = mongoose.model(
-  "Genre",
-  new mongoose.Schema({
-    name: {
-      type: String,
-      required: true,
-      minlength: 5,
-      maxlength: 50,
-    },
-  })
-);
+// moved to customer model.
+// const Genre = mongoose.model(
+//   "Genre",
+//   new mongoose.Schema({
+//     name: {
+//       type: String,
+//       required: true,
+//       minlength: 5,
+//       maxlength: 50,
+//     },
+//   })
+// );
 
 // localhost:3000/api/genres
 router.get("/", async (req, res) => {
@@ -81,12 +82,12 @@ router.delete("/:id", async (req, res) => {
   res.send(genre);
 });
 
-function validateGenre(genre) {
-  const schema = {
-    name: Joi.string().min(3).required(),
-  };
-  // compare shape of our object with the one sent by the user.
-  return Joi.validate(genre, schema);
-}
+// function validateGenre(genre) {
+//   const schema = {
+//     name: Joi.string().min(3).required(),
+//   };
+//   // compare shape of our object with the one sent by the user.
+//   return Joi.validate(genre, schema);
+// }
 
 module.exports = router;
